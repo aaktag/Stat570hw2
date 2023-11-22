@@ -1,0 +1,89 @@
+---
+title: "STAT570 Teaching"
+author: "Alican AKTAG"
+date: '2023-11-21'
+topic: "15.4.3 - 15.4.4 - 15.4.5 -Character classes, Quantifiers and Operator precedence and parentheses"
+output: html_document
+---
+
+```{r}
+install.packages("stringr")
+library(stringr)
+library(janitor)
+
+```
+
+```{r}
+# str_view is a function that matches the string with the underlying representation.
+
+
+# what if the alphabet was not ordered.
+
+x <- "abtcdfyxd ABCD 12345 -!@#%."
+str_view(x, "[a-z]+")
+
+# It gets highlighted anyway.
+```
+
+
+```{r}
+str_view("a-b-c", "[a\\-c]")
+# <a><->b<-><c>
+
+# In this example, by coding this way. The Hyphen is seen as a character and calls hyphen individually.
+
+
+# \w matches any âwordâ character, i.e. letters and numbers;
+# Punctuation characters aren't considered as "words".
+
+```
+
+
+```{r}
+x <- "ab12634cd123456789ef12345"
+str_view(x, "\\d{5}")
+
+# It takes multiple digits of whatever number is in d.
+# When there is another operator instead of d, the same rule applies to it too
+```
+
+
+```{r}
+y <- "ab1234cd5678ef"
+str_view(y, "\\d{3,}")
+
+y1<- "ab12634cd123456789ef12345"
+str_view(y1, "\\d{1,}")
+
+# There is no difference between 1 and 3 because it says take all after the first number.
+```
+
+```{r}
+z <- "ab12634cd123456789e f12345"
+str_view(z, "\\s{1}")
+
+# This is an example for space.
+
+
+
+z <- "ab12634cd123456789e f12345"
+str_view(z, "\\s{2}")
+
+# NOTHING !!! because there is no "2 spaces"
+```
+
+```{r}
+a <- "ab123cd5678ef"
+str_view(a, "\\d{1,2}")
+
+b <- "ab12345cd5678ef"
+str_view(b, "\\d{2,4}")
+
+# It tries to create a group from the larger number first.
+```
+
+
+```{r}
+system("git status")
+system("git init")
+```
